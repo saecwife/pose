@@ -49,11 +49,14 @@ export const generatePoseDescriptions = async (productName: string): Promise<str
  */
 export const generatePoseSketch = async (productName: string, poseDescription: string): Promise<string> => {
   try {
-    // Modified prompt to ensure a human figure is drawn
-    const prompt = `A quick, rough black and white pencil sketch storyboard illustration of a FASHION MODEL posing with ${productName}. 
+    // Strictly enforce human presence in the prompt
+    const prompt = `Fashion illustration storyboard sketch. A HUMAN MODEL posing with the product "${productName}". 
     The specific pose is: ${poseDescription}. 
-    Style: Minimalist fashion illustration, loose lines, concept art, white background. 
-    Focus on the human figure's posture and how they hold or interact with the product.`;
+    
+    CRITICAL INSTRUCTION: The image MUST contain a human figure (man or woman). Do not draw the product alone.
+    
+    Style: Quick black and white pencil sketch, loose lines, fashion concept art, white background. 
+    Focus on the body language and how the hands/body interact with the item.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-image",
