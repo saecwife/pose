@@ -1,0 +1,5 @@
+{
+  "name": "PoseGrid AI",
+  "description": "Generate a 9-grid storyboard of model posing sketches for any product using Gemini AI.",
+  "requestFramePermissions": []
+}
