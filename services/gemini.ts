@@ -1,6 +1,13 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.VITE_GEMINI_API_KEY });
+// 從 Vite 的環境變數讀取金鑰（前面一定要是 VITE_ 開頭）
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!apiKey) {
+  throw new Error("VITE_GEMINI_API_KEY is not defined");
+}
+
+const ai = new GoogleGenAI({ apiKey });
 
 /**
  * Generates 9 creative photography pose descriptions for a model interacting with a given product.
